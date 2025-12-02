@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+
 from notes_service.api.router import router
 
 
@@ -8,12 +9,13 @@ app.include_router(router)
 
 
 @app.get("/health")
-def health_check():
+def health_check() -> dict[str, str]:
     return {"status": "ok"}
 
 
-def main():
+def main() -> None:
     import uvicorn
+
     uvicorn.run(app, host="0.0.0.0", port=8000)
 
 
